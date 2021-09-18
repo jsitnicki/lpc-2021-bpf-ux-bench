@@ -1,0 +1,9 @@
+#!/usr/bin/env -S bpftrace --btf
+/*
+ * Dump locked memory usage for current user.
+ */
+
+BEGIN {
+	printf("%ld bytes", curtask->cred->user->locked_vm.counter << 12);
+	exit();
+}

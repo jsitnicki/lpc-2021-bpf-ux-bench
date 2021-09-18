@@ -1,0 +1,344 @@
+# tracer: function_graph
+#
+# CPU  DURATION                  FUNCTION CALLS
+# |     |   |                     |   |   |   |
+ 0)               |  __x64_sys_bpf() {
+ 0)               |    capable() {
+ 0)               |      security_capable() {
+ 0)   0.150 us    |        cap_capable();
+ 0)               |        selinux_capable() {
+ 0)               |          cred_has_capability.isra.0() {
+ 0)   0.325 us    |            avc_lookup();
+ 0)   0.112 us    |            rcu_read_unlock_strict();
+ 0)   0.883 us    |          }
+ 0)   1.197 us    |        }
+ 0)   0.154 us    |        bpf_lsm_capable();
+ 0)   2.284 us    |      }
+ 0)   2.730 us    |    }
+ 0)               |    __check_object_size() {
+ 0)   0.146 us    |      check_stack_object();
+ 0)   0.391 us    |    }
+ 0)               |    security_bpf() {
+ 0)               |      selinux_bpf() {
+ 0)               |        avc_has_perm() {
+ 0)   0.189 us    |          avc_lookup();
+ 0)   0.111 us    |          rcu_read_unlock_strict();
+ 0)   0.614 us    |        }
+ 0)   0.851 us    |      }
+ 0)   0.197 us    |      bpf_lsm_bpf();
+ 0)   1.760 us    |    }
+ 0)               |    bpf_prog_load() {
+ 0)               |      __check_object_size() {
+ 0)   0.102 us    |        check_stack_object();
+ 0)   0.325 us    |      }
+ 0)               |      capable() {
+ 0)               |        security_capable() {
+ 0)   0.106 us    |          cap_capable();
+ 0)               |          selinux_capable() {
+ 0)   0.229 us    |            cred_has_capability.isra.0();
+ 0)   0.433 us    |          }
+ 0)   0.103 us    |          bpf_lsm_capable();
+ 0)   1.081 us    |        }
+ 0)   1.282 us    |      }
+ 0)               |      bpf_prog_alloc() {
+ 0)               |        bpf_prog_alloc_no_stats() {
+ 0)               |          __vmalloc() {
+ 0)               |            __vmalloc_node() {
+ 0) ! 101.126 us  |            }
+ 0) ! 108.835 us  |          }
+ 0)               |          kmem_cache_alloc_trace() {
+ 0)   6.046 us    |            should_failslab();
+ 0)   0.150 us    |            rcu_read_unlock_strict();
+ 0)   0.123 us    |            rcu_read_unlock_strict();
+ 0)   0.198 us    |            obj_cgroup_charge();
+ 0)   0.127 us    |            rcu_read_unlock_strict();
+ 0)   0.335 us    |            __mod_memcg_lruvec_state();
+ 0)   0.113 us    |            rcu_read_unlock_strict();
+ 0)   0.114 us    |            rcu_read_unlock_strict();
+ 0) + 25.424 us   |          }
+ 0)               |          __alloc_percpu_gfp() {
+ 0)               |            pcpu_alloc() {
+ 0) + 31.711 us   |            }
+ 0) + 37.945 us   |          }
+ 0)   0.156 us    |          __mutex_init();
+ 0)   0.138 us    |          __mutex_init();
+ 0) ! 173.805 us  |        }
+ 0)               |        __alloc_percpu_gfp() {
+ 0)               |          pcpu_alloc() {
+ 0)   0.120 us    |            rcu_read_unlock_strict();
+ 0)   0.111 us    |            rcu_read_unlock_strict();
+ 0)   0.143 us    |            obj_cgroup_charge();
+ 0)               |            mutex_lock_killable() {
+ 0) + 26.189 us   |            }
+ 0)   0.284 us    |            pcpu_find_block_fit();
+ 0)   0.717 us    |            pcpu_alloc_area();
+ 0)   0.140 us    |            mutex_unlock();
+ 0)   0.254 us    |            __mod_memcg_state();
+ 0)   0.138 us    |            rcu_read_unlock_strict();
+ 0) + 35.472 us   |          }
+ 0) + 35.698 us   |        }
+ 0) ! 210.001 us  |      }
+ 0)               |      security_bpf_prog_alloc() {
+ 0)               |        selinux_bpf_prog_alloc() {
+ 0)               |          kmem_cache_alloc_trace() {
+ 0)   5.899 us    |            should_failslab();
+ 0) + 32.329 us   |          }
+ 0) + 32.624 us   |        }
+ 0)   0.160 us    |        bpf_lsm_bpf_prog_alloc_security();
+ 0) + 33.440 us   |      }
+ 0)               |      __check_object_size() {
+ 0)   0.169 us    |        check_stack_object();
+ 0)   0.149 us    |        __virt_addr_valid();
+ 0)   0.906 us    |      }
+ 0)   0.299 us    |      ktime_get_with_offset();
+ 0)   0.154 us    |      bpf_obj_name_cpy();
+ 0)               |      bpf_check() {
+ 0)   0.188 us    |        ktime_get();
+ 0)               |        kmem_cache_alloc_trace() {
+ 0)   6.543 us    |          should_failslab();
+ 0) + 53.040 us   |        }
+ 0)               |        vzalloc() {
+ 0)               |          __vmalloc_node() {
+ 0)               |            __vmalloc_node_range() {
+ 0) + 21.676 us   |            }
+ 0) + 27.814 us   |          }
+ 0) + 28.085 us   |        }
+ 0)               |        capable() {
+ 0)               |          security_capable() {
+ 0)   0.156 us    |            cap_capable();
+ 0)   0.476 us    |            selinux_capable();
+ 0)   0.136 us    |            bpf_lsm_capable();
+ 0)   1.334 us    |          }
+ 0)   1.627 us    |        }
+ 0)               |        capable() {
+ 0)               |          security_capable() {
+ 0)   0.110 us    |            cap_capable();
+ 0)   0.333 us    |          }
+ 0)   0.561 us    |        }
+ 0)               |        capable() {
+ 0)               |          security_capable() {
+ 0)   0.107 us    |            cap_capable();
+ 0)   0.323 us    |          }
+ 0)   0.548 us    |        }
+ 0)               |        capable() {
+ 0)               |          security_capable() {
+ 0)   0.108 us    |            cap_capable();
+ 0)   0.319 us    |          }
+ 0)   0.528 us    |        }
+ 0)               |        capable() {
+ 0)               |          security_capable() {
+ 0)   0.107 us    |            cap_capable();
+ 0)   0.317 us    |          }
+ 0)   0.541 us    |        }
+ 0)               |        capable() {
+ 0)               |          security_capable() {
+ 0)   0.119 us    |            cap_capable();
+ 0)   0.331 us    |          }
+ 0)   0.549 us    |        }
+ 0)               |        capable() {
+ 0)               |          security_capable() {
+ 0)   0.105 us    |            cap_capable();
+ 0)   0.321 us    |          }
+ 0)   0.522 us    |        }
+ 0)               |        capable() {
+ 0)               |          security_capable() {
+ 0)   0.107 us    |            cap_capable();
+ 0)   0.316 us    |          }
+ 0)   0.517 us    |        }
+ 0)               |        capable() {
+ 0)               |          security_capable() {
+ 0)   0.107 us    |            cap_capable();
+ 0)   0.319 us    |          }
+ 0)   0.523 us    |        }
+ 0)               |        capable() {
+ 0)               |          security_capable() {
+ 0)   0.106 us    |            cap_capable();
+ 0)   0.319 us    |          }
+ 0)   0.522 us    |        }
+ 0)               |        capable() {
+ 0)               |          security_capable() {
+ 0)   0.105 us    |            cap_capable();
+ 0)   0.316 us    |          }
+ 0)   0.518 us    |        }
+ 0)               |        capable() {
+ 0)               |          security_capable() {
+ 0)   0.106 us    |            cap_capable();
+ 0)   0.270 us    |            selinux_capable();
+ 0)   0.121 us    |            bpf_lsm_capable();
+ 0)   0.941 us    |          }
+ 0)   1.141 us    |        }
+ 0)               |        kvmalloc_node() {
+ 0)               |          __kmalloc_node() {
+ 0)   0.130 us    |            kmalloc_slab();
+ 0)   5.912 us    |            should_failslab();
+ 0) + 87.909 us   |          }
+ 0) + 88.149 us   |        }
+ 0)   0.250 us    |        add_subprog();
+ 0)   0.237 us    |        check_subprogs();
+ 0)               |        bpf_prog_calc_tag() {
+ 0)               |          vmalloc() {
+ 0)               |            __vmalloc_node() {
+ 0) + 23.459 us   |            }
+ 0) + 29.515 us   |          }
+ 0)               |          vfree() {
+ 0)               |            __vfree() {
+ 0) + 21.226 us   |            }
+ 0) + 40.519 us   |          }
+ 0) + 71.257 us   |        }
+ 0)   0.253 us    |        bpf_opcode_in_insntable();
+ 0)   0.121 us    |        bpf_opcode_in_insntable();
+ 0)               |        check_cfg() {
+ 0)               |          kvmalloc_node() {
+ 0)               |            __kmalloc_node() {
+ 0) + 20.830 us   |            }
+ 0) + 26.756 us   |          }
+ 0)               |          kvmalloc_node() {
+ 0)               |            __kmalloc_node() {
+ 0) + 15.229 us   |            }
+ 0) + 20.969 us   |          }
+ 0)   0.161 us    |          push_insn();
+ 0)   0.142 us    |          push_insn();
+ 0)               |          kvfree() {
+ 0)   0.132 us    |            is_vmalloc_addr();
+ 0)   0.148 us    |            kfree();
+ 0)   0.608 us    |          }
+ 0)               |          kvfree() {
+ 0)   0.108 us    |            is_vmalloc_addr();
+ 0)   0.186 us    |            kfree();
+ 0)   0.609 us    |          }
+ 0) + 50.236 us   |        }
+ 0)               |        do_check_common() {
+ 0)               |          kmem_cache_alloc_trace() {
+ 0)   6.337 us    |            should_failslab();
+ 0)   0.468 us    |            __slab_alloc();
+ 0) + 47.523 us   |          }
+ 0)               |          kmem_cache_alloc_trace() {
+ 0)   5.741 us    |            should_failslab();
+ 0) + 22.932 us   |          }
+ 0)               |          init_reg_state() {
+ 0)   0.627 us    |            mark_reg_not_init();
+ 0)   0.167 us    |            mark_reg_not_init();
+ 0)   0.148 us    |            mark_reg_not_init();
+ 0)   0.147 us    |            mark_reg_not_init();
+ 0)   0.147 us    |            mark_reg_not_init();
+ 0)   0.147 us    |            mark_reg_not_init();
+ 0)   0.148 us    |            mark_reg_not_init();
+ 0)   0.152 us    |            mark_reg_not_init();
+ 0)   0.145 us    |            mark_reg_not_init();
+ 0)   0.146 us    |            mark_reg_not_init();
+ 0)   0.146 us    |            mark_reg_not_init();
+ 0)   0.480 us    |            mark_reg_known_zero();
+ 0)   3.944 us    |          }
+ 0)               |          mark_reg_known_zero() {
+ 0)   0.184 us    |            __mark_reg_known();
+ 0)   0.408 us    |          }
+ 0)   0.144 us    |          btf_check_subprog_arg_match();
+ 0)               |          check_reg_arg() {
+ 0)   0.181 us    |            is_reg64.constprop.0();
+ 0)   6.252 us    |          }
+ 0)               |          mark_reg_unknown() {
+ 0)   0.136 us    |            __mark_reg_unknown();
+ 0)   0.377 us    |          }
+ 0)               |          __mark_reg_known() {
+ 0)   0.106 us    |            tnum_const();
+ 0)   0.352 us    |          }
+ 0)   5.708 us    |          check_reference_leak();
+ 0)   0.150 us    |          tnum_range();
+ 0)               |          check_reg_arg() {
+ 0)   0.132 us    |            is_reg64.constprop.0();
+ 0)   0.138 us    |            mark_reg_read();
+ 0)   0.748 us    |          }
+ 0)   0.147 us    |          pop_stack();
+ 0)               |          free_verifier_state() {
+ 0)   0.143 us    |            kfree();
+ 0)   0.107 us    |            kfree();
+ 0)   0.212 us    |            kfree();
+ 0)   0.113 us    |            kfree();
+ 0)   0.225 us    |            kfree();
+ 0)   1.429 us    |          }
+ 0)   0.139 us    |          pop_stack();
+ 0) ! 149.013 us  |        }
+ 0)               |        kvfree() {
+ 0)   0.124 us    |          is_vmalloc_addr();
+ 0)   0.148 us    |          kfree();
+ 0)   0.576 us    |        }
+ 0)   0.163 us    |        check_max_stack_depth();
+ 0)   0.475 us    |        convert_ctx_accesses();
+ 0)   0.437 us    |        do_misc_fixups();
+ 0)   0.149 us    |        bpf_jit_needs_zext();
+ 0)   0.214 us    |        ktime_get();
+ 0)   0.159 us    |        verbose();
+ 0)   0.137 us    |        __bpf_free_used_maps();
+ 0)   0.130 us    |        __bpf_free_used_btfs();
+ 0)               |        vfree() {
+ 0)               |          __vfree() {
+ 0)               |            __vunmap() {
+ 0) + 16.260 us   |            }
+ 0) + 28.530 us   |          }
+ 0) ! 107.734 us  |        }
+ 0)   0.564 us    |        kfree();
+ 0) ! 566.767 us  |      }
+ 0)               |      bpf_prog_select_runtime() {
+ 0)   0.157 us    |        bpf_prog_alloc_jited_linfo();
+ 0)               |        bpf_int_jit_compile() {
+ 0)   0.139 us    |          bpf_jit_blind_constants();
+ 0)               |          kmem_cache_alloc_trace() {
+ 0)   5.841 us    |            should_failslab();
+ 0) + 30.055 us   |          }
+ 0)               |          kvmalloc_node() {
+ 0)               |            __kmalloc_node() {
+ 0) + 16.823 us   |            }
+ 0) + 22.705 us   |          }
+ 0)               |          do_jit() {
+ 0)   0.153 us    |            emit_mov_imm32();
+ 0)   0.147 us    |            pop_callee_regs();
+ 0)   1.465 us    |          }
+ 0)               |          do_jit() {
+ 0)   0.159 us    |            emit_mov_imm32();
+ 0)   0.142 us    |            pop_callee_regs();
+ 0)   6.838 us    |          }
+ 0)               |          bpf_jit_binary_alloc() {
+ 0)   0.520 us    |            bpf_jit_charge_modmem();
+ 0)   0.866 us    |          }
+ 0)               |          kvfree() {
+ 0)   0.127 us    |            is_vmalloc_addr();
+ 0)   0.168 us    |            kfree();
+ 0)   0.629 us    |          }
+ 0)   0.314 us    |          kfree();
+ 0) + 91.028 us   |        }
+ 0)               |        bpf_prog_jit_attempt_done() {
+ 0)   0.121 us    |          kfree();
+ 0)   0.388 us    |        }
+ 0) + 92.238 us   |      }
+ 0)               |      __bpf_prog_put_noref() {
+ 0)   0.150 us    |        bpf_prog_kallsyms_del_all();
+ 0)   0.121 us    |        btf_put();
+ 0)               |        kvfree() {
+ 0)   0.104 us    |          is_vmalloc_addr();
+ 0)   0.111 us    |          kfree();
+ 0)   0.510 us    |        }
+ 0)               |        kvfree() {
+ 0)   0.105 us    |          is_vmalloc_addr();
+ 0)   0.107 us    |          kfree();
+ 0)   0.502 us    |        }
+ 0)   0.104 us    |        kfree();
+ 0)               |        kvfree() {
+ 0)   0.102 us    |          is_vmalloc_addr();
+ 0)   0.106 us    |          kfree();
+ 0)   0.497 us    |        }
+ 0)   0.105 us    |        kfree();
+ 0)   0.198 us    |        free_uid();
+ 0)               |        security_bpf_prog_free() {
+ 0)               |          selinux_bpf_prog_free() {
+ 0)   0.278 us    |            kfree();
+ 0)   0.497 us    |          }
+ 0)   0.137 us    |          bpf_lsm_bpf_prog_free_security();
+ 0)   1.143 us    |        }
+ 0)               |        bpf_prog_free() {
+ 0)               |          queue_work_on() {
+ 0)   3.752 us    |            __queue_work();
+ 0)   4.189 us    |          }
+ 0)   4.542 us    |        }
+ 0)   9.147 us    |      }
+ 0) ! 916.911 us  |    }
+ 0) ! 933.892 us  |  }

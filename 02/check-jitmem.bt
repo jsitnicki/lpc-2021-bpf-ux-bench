@@ -1,0 +1,9 @@
+#!/usr/bin/env -S bpftrace --btf
+/*
+ * Dump current BPF JIT memory usage
+ */
+
+BEGIN {
+      printf("%ld bytes", *kaddr("bpf_jit_current") << 12);
+      exit();
+}

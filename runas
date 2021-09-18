@@ -1,0 +1,33 @@
+#!/bin/bash
+# -*- mode: shell-script -*-
+#
+# runas: Run command as given user with given capabilities.
+#
+# Usage:
+#   runas <user> <caps> <command> <args...>
+#
+# Example:
+#   $ sudo ./runas nobody +bpf,+sys_resource setpriv --dump
+#   uid: 65534
+#   euid: 65534
+#   gid: 65534
+#   egid: 65534
+#   Supplementary groups: [none]
+#   no_new_privs: 0
+#   Inheritable capabilities: sys_resource,bpf
+#   Ambient capabilities: sys_resource,bpf
+#   Capability bounding set: sys_resource,bpf
+#   Securebits: [none]
+#   Parent death signal: [none]
+#   SELinux label: kernel
+#
+
+readonly user="$1"
+readonly caps="-all,$2"
+
+shift 2
+
+exec setpriv \
+     --reuid=$user --regid=$user --clear-groups \
+     --inh-caps=$caps --ambient-caps=$caps --bounding-set=$caps \
+     --reset-env -- env PATH=/usr/sbin:/usr/bin "$@"

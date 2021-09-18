@@ -1,0 +1,2 @@
+bpf(BPF_MAP_CREATE, {map_type=BPF_MAP_TYPE_ARRAY, key_size=4, value_size=8, max_entries=1, map_flags=0, inner_map_fd=0, map_name="pkt_stats", map_ifindex=0, btf_fd=0, btf_key_type_id=0, btf_value_type_id=0, btf_vmlinux_value_type_id=0}, 120) = -1 EPERM (Operation not permitted)
++++ exited with 1 +++

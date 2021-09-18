@@ -1,0 +1,28 @@
+# tracer: function_graph
+#
+# CPU  DURATION                  FUNCTION CALLS
+# |     |   |                     |   |   |   |
+ 0)               |  __x64_sys_bpf() {
+ 0)               |    capable() {
+ 0)               |      security_capable() {
+ 0)   0.217 us    |        cap_capable();
+ 0)   0.193 us    |        apparmor_capable();
+ 0)   1.055 us    |      }
+ 0)   1.458 us    |    }
+ 0)               |    __check_object_size() {
+ 0)   0.120 us    |      check_stack_object();
+ 0)   0.384 us    |    }
+ 0)   0.148 us    |    security_bpf();
+ 0)   0.151 us    |    array_map_alloc_check();
+ 0)               |    array_map_alloc() {
+ 0)               |      capable() {
+ 0)               |        security_capable() {
+ 0)   0.102 us    |          cap_capable();
+ 0)   0.108 us    |          apparmor_capable();
+ 0)   0.534 us    |        }
+ 0)   0.744 us    |      }
+ 0)               |      bpf_map_charge_init() {
+ 0)   0.151 us    |        free_uid();
+ 0)   0.433 us    |      }
+ 0)   1.636 us    |    }
+ 0) + 15.821 us   |  }

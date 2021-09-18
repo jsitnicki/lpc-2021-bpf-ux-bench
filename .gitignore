@@ -1,0 +1,6 @@
+*~
+01/map-create
+02/pkt_counter.o
+05/attach-pkt-counter
+05/pkt_counter.skel.h
+06/map-dump
